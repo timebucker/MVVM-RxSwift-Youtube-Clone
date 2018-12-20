@@ -48,8 +48,6 @@ class ApiService: NSObject {
                 print(jsonError)
             }
             
-            
-            
             }.resume()
     }
     

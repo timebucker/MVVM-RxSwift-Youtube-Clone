@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		9A4AE6B050DF2A0CE6686F78 /* Pods_MVVM_RxSwift_Youtube_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A8F5E120A0C083910C874D7 /* Pods_MVVM_RxSwift_Youtube_Clone.framework */; };
+		A954414E21CC0C3B00FE7C84 /* VideoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A954414D21CC0C3B00FE7C84 /* VideoListModel.swift */; };
+		A954415021CC0EF100FE7C84 /* VideoAPI+Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A954414F21CC0EF100FE7C84 /* VideoAPI+Parameters.swift */; };
+		A954415221CC0EFE00FE7C84 /* VideoAPI+Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A954415121CC0EFE00FE7C84 /* VideoAPI+Route.swift */; };
+		A954415421CC105200FE7C84 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A954415321CC105200FE7C84 /* Config.swift */; };
+		A954415621CC138F00FE7C84 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A954415521CC138F00FE7C84 /* APIProvider.swift */; };
 		A9706CE221C815A200447D83 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9706CE121C815A200447D83 /* MenuCell.swift */; };
 		A9706CE521C815F800447D83 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9706CE421C815F800447D83 /* BaseCell.swift */; };
 		A9ACD96B21C65CE500F538AA /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ACD95A21C65CE400F538AA /* ApiService.swift */; };
@@ -29,11 +34,18 @@
 		A9ACD98321C65F7700F538AA /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ACD98221C65F7700F538AA /* Navigator.swift */; };
 		A9ACD98821C6644A00F538AA /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ACD96021C65CE500F538AA /* SubscriptionCell.swift */; };
 		A9ACD98A21C6652C00F538AA /* ReuseableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ACD98921C6652C00F538AA /* ReuseableView.swift */; };
+		A9FAD4D021C8F8780045FF5B /* VideoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FAD4CF21C8F8780045FF5B /* VideoAPI.swift */; };
+		A9FAD4D321CA2B0C0045FF5B /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FAD4D221CA2B0C0045FF5B /* VideoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		22C1B0B308DFF7E8CD889737 /* Pods-MVVM-RxSwift-Youtube-Clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-RxSwift-Youtube-Clone.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-RxSwift-Youtube-Clone/Pods-MVVM-RxSwift-Youtube-Clone.release.xcconfig"; sourceTree = "<group>"; };
 		2A8F5E120A0C083910C874D7 /* Pods_MVVM_RxSwift_Youtube_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_RxSwift_Youtube_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A954414D21CC0C3B00FE7C84 /* VideoListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListModel.swift; sourceTree = "<group>"; };
+		A954414F21CC0EF100FE7C84 /* VideoAPI+Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoAPI+Parameters.swift"; sourceTree = "<group>"; };
+		A954415121CC0EFE00FE7C84 /* VideoAPI+Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoAPI+Route.swift"; sourceTree = "<group>"; };
+		A954415321CC105200FE7C84 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		A954415521CC138F00FE7C84 /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		A9706CE121C815A200447D83 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		A9706CE421C815F800447D83 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		A9ACD94521C65CCB00F538AA /* MVVM-RxSwift-Youtube-Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM-RxSwift-Youtube-Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,6 +69,8 @@
 		A9ACD97F21C65F2400F538AA /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		A9ACD98221C65F7700F538AA /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		A9ACD98921C6652C00F538AA /* ReuseableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseableView.swift; sourceTree = "<group>"; };
+		A9FAD4CF21C8F8780045FF5B /* VideoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoAPI.swift; sourceTree = "<group>"; };
+		A9FAD4D221CA2B0C0045FF5B /* VideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		D79E0E4B3BA0B965B3C4664B /* Pods-MVVM-RxSwift-Youtube-Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-RxSwift-Youtube-Clone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-RxSwift-Youtube-Clone/Pods-MVVM-RxSwift-Youtube-Clone.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +133,7 @@
 		A9ACD94721C65CCB00F538AA /* MVVM-RxSwift-Youtube-Clone */ = {
 			isa = PBXGroup;
 			children = (
+				A9FAD4D121CA2AF00045FF5B /* Models */,
 				A9ACD98421C6632C00F538AA /* APIs */,
 				A9706CE321C815DA00447D83 /* Common */,
 				A9ACD98721C6637700F538AA /* Setting */,
@@ -130,6 +145,7 @@
 				A9ACD96421C65CE500F538AA /* AppDelegate.swift */,
 				A9ACD96821C65CE500F538AA /* Assets.xcassets */,
 				A9ACD95B21C65CE400F538AA /* Info.plist */,
+				A954415321CC105200FE7C84 /* Config.swift */,
 			);
 			path = "MVVM-RxSwift-Youtube-Clone";
 			sourceTree = "<group>";
@@ -172,6 +188,10 @@
 			isa = PBXGroup;
 			children = (
 				A9ACD95A21C65CE400F538AA /* ApiService.swift */,
+				A9FAD4CF21C8F8780045FF5B /* VideoAPI.swift */,
+				A954414F21CC0EF100FE7C84 /* VideoAPI+Parameters.swift */,
+				A954415121CC0EFE00FE7C84 /* VideoAPI+Route.swift */,
+				A954415521CC138F00FE7C84 /* APIProvider.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
@@ -213,6 +233,15 @@
 			children = (
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A9FAD4D121CA2AF00045FF5B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A9FAD4D221CA2B0C0045FF5B /* VideoModel.swift */,
+				A954414D21CC0C3B00FE7C84 /* VideoListModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F42D8495DDDA8C295D5443C6 /* Pods */ = {
@@ -379,14 +408,21 @@
 				A9ACD98A21C6652C00F538AA /* ReuseableView.swift in Sources */,
 				A9ACD97A21C65CE500F538AA /* Video.swift in Sources */,
 				A9ACD96E21C65CE500F538AA /* TrendingCell.swift in Sources */,
+				A954415021CC0EF100FE7C84 /* VideoAPI+Parameters.swift in Sources */,
+				A9FAD4D021C8F8780045FF5B /* VideoAPI.swift in Sources */,
 				A9ACD97B21C65CE500F538AA /* VideoLauncher.swift in Sources */,
 				A9ACD97821C65CE500F538AA /* SettingCell.swift in Sources */,
 				A9ACD97021C65CE500F538AA /* MenuBar.swift in Sources */,
+				A954415621CC138F00FE7C84 /* APIProvider.swift in Sources */,
 				A9ACD97721C65CE500F538AA /* SettingsLauncher.swift in Sources */,
 				A9ACD98821C6644A00F538AA /* SubscriptionCell.swift in Sources */,
+				A954415421CC105200FE7C84 /* Config.swift in Sources */,
 				A9ACD97221C65CE500F538AA /* Extensions.swift in Sources */,
 				A9ACD97521C65CE500F538AA /* AppDelegate.swift in Sources */,
 				A9ACD97421C65CE500F538AA /* SettingName.swift in Sources */,
+				A954415221CC0EFE00FE7C84 /* VideoAPI+Route.swift in Sources */,
+				A9FAD4D321CA2B0C0045FF5B /* VideoModel.swift in Sources */,
+				A954414E21CC0C3B00FE7C84 /* VideoListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
