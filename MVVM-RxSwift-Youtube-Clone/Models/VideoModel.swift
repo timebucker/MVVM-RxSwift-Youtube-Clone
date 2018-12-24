@@ -9,20 +9,34 @@
 import Foundation
 
 class VideoModel {
-    let videoId: String?
-    let videoURL: String?
-    let thumbnailURL: String?
-    let viewCount: Double
-    let channelName: String?
-    let channelAvatarURL: String?
+    var videoId: String?
+    var videoURL: String?
+    var title: String?
+    var thumbnailURL: String?
+    var viewCount: Double
+    var channelName: String?
+    var channelId: String?
+    var channelAvatarURL: String?
 
     init() {
         videoId = ""
         videoURL = ""
+        title = ""
+        channelId = ""
         thumbnailURL = ""
         viewCount = 0
         channelName = ""
         channelAvatarURL = ""
     }
+    
+//    init(id: String, url: String, title: String, thumbnail: String, viewCount: Double, channelName: String, channelAvatar: String) {
+//        videoId = id
+//        videoURL = "https://www.youtube.com/watch?v=\(String(describing: videoId))"
+//        title = title
+//        thumbnailURL = thumbnail
+//        viewCount = viewCount
+//        channelName = channelName
+//        channelAvatar = channelAvatar
+//    }
 }
 

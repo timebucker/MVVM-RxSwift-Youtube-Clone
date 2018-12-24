@@ -16,7 +16,6 @@ struct Video: Decodable {
     var uploadDate: Date?
     
     var channel: Channel?
-    
 }
 
 struct Channel: Decodable {

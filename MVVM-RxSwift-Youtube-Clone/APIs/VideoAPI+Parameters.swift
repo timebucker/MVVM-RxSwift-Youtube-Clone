@@ -17,6 +17,10 @@ extension VideoAPI {
         switch self {
         case .getVideoList(let categoryId):
             parameter["videoCategoryId"] = categoryId
+            parameter["type"] = "video"
+            parameter["maxResults"] = 5
+        case .getChannelInfo(let channelId):
+            parameter["id"] = channelId
         default:
             break
         }

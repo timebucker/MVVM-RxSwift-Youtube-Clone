@@ -9,12 +9,7 @@
 import UIKit
 
 class TrendingCell: FeedCell {
-    
-    override func fetchVideos() {
-        ApiService.shared.fetchTrendingFeed { (videos) in
-            self.videos = videos
-            self.collectionView.reloadData()
-        }
+    override func setCategoryId() {
+        vm.categoryId = VideoCategoryType.gaming.rawValue
     }
-    
 }

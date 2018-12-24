@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		9A4AE6B050DF2A0CE6686F78 /* Pods_MVVM_RxSwift_Youtube_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A8F5E120A0C083910C874D7 /* Pods_MVVM_RxSwift_Youtube_Clone.framework */; };
-		A954414E21CC0C3B00FE7C84 /* VideoListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A954414D21CC0C3B00FE7C84 /* VideoListModel.swift */; };
+		A919CBF021D0F02000EA03FF /* VideoCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A919CBEF21D0F02000EA03FF /* VideoCategoryType.swift */; };
+		A94552D621CFCDD70059A728 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94552D521CFCDD70059A728 /* VideoViewModel.swift */; };
 		A954415021CC0EF100FE7C84 /* VideoAPI+Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A954414F21CC0EF100FE7C84 /* VideoAPI+Parameters.swift */; };
 		A954415221CC0EFE00FE7C84 /* VideoAPI+Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A954415121CC0EFE00FE7C84 /* VideoAPI+Route.swift */; };
 		A954415421CC105200FE7C84 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A954415321CC105200FE7C84 /* Config.swift */; };
 		A954415621CC138F00FE7C84 /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A954415521CC138F00FE7C84 /* APIProvider.swift */; };
 		A9706CE221C815A200447D83 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9706CE121C815A200447D83 /* MenuCell.swift */; };
 		A9706CE521C815F800447D83 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9706CE421C815F800447D83 /* BaseCell.swift */; };
-		A9ACD96B21C65CE500F538AA /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ACD95A21C65CE400F538AA /* ApiService.swift */; };
 		A9ACD96D21C65CE500F538AA /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ACD95C21C65CE400F538AA /* HomeController.swift */; };
 		A9ACD96E21C65CE500F538AA /* TrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ACD95D21C65CE500F538AA /* TrendingCell.swift */; };
 		A9ACD96F21C65CE500F538AA /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ACD95E21C65CE500F538AA /* VideoCell.swift */; };
@@ -41,7 +41,8 @@
 /* Begin PBXFileReference section */
 		22C1B0B308DFF7E8CD889737 /* Pods-MVVM-RxSwift-Youtube-Clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVM-RxSwift-Youtube-Clone.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVM-RxSwift-Youtube-Clone/Pods-MVVM-RxSwift-Youtube-Clone.release.xcconfig"; sourceTree = "<group>"; };
 		2A8F5E120A0C083910C874D7 /* Pods_MVVM_RxSwift_Youtube_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVM_RxSwift_Youtube_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A954414D21CC0C3B00FE7C84 /* VideoListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListModel.swift; sourceTree = "<group>"; };
+		A919CBEF21D0F02000EA03FF /* VideoCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCategoryType.swift; sourceTree = "<group>"; };
+		A94552D521CFCDD70059A728 /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
 		A954414F21CC0EF100FE7C84 /* VideoAPI+Parameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoAPI+Parameters.swift"; sourceTree = "<group>"; };
 		A954415121CC0EFE00FE7C84 /* VideoAPI+Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoAPI+Route.swift"; sourceTree = "<group>"; };
 		A954415321CC105200FE7C84 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -49,7 +50,6 @@
 		A9706CE121C815A200447D83 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		A9706CE421C815F800447D83 /* BaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		A9ACD94521C65CCB00F538AA /* MVVM-RxSwift-Youtube-Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MVVM-RxSwift-Youtube-Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9ACD95A21C65CE400F538AA /* ApiService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 		A9ACD95B21C65CE400F538AA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9ACD95C21C65CE400F538AA /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		A9ACD95D21C65CE500F538AA /* TrendingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingCell.swift; sourceTree = "<group>"; };
@@ -108,6 +108,7 @@
 			children = (
 				A9706CE421C815F800447D83 /* BaseCell.swift */,
 				A9ACD96221C65CE500F538AA /* CustomImageView.swift */,
+				A919CBEF21D0F02000EA03FF /* VideoCategoryType.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -187,7 +188,6 @@
 		A9ACD98421C6632C00F538AA /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				A9ACD95A21C65CE400F538AA /* ApiService.swift */,
 				A9FAD4CF21C8F8780045FF5B /* VideoAPI.swift */,
 				A954414F21CC0EF100FE7C84 /* VideoAPI+Parameters.swift */,
 				A954415121CC0EFE00FE7C84 /* VideoAPI+Route.swift */,
@@ -200,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				A9ACD96921C65CE500F538AA /* Video.swift */,
-				A9ACD95E21C65CE500F538AA /* VideoCell.swift */,
 				A9ACD96A21C65CE500F538AA /* VideoLauncher.swift */,
 			);
 			path = Video;
@@ -220,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				A9706CE021C8158C00447D83 /* Menu */,
+				A9ACD95E21C65CE500F538AA /* VideoCell.swift */,
 				A9ACD95C21C65CE400F538AA /* HomeController.swift */,
 				A9ACD96021C65CE500F538AA /* SubscriptionCell.swift */,
 				A9ACD96521C65CE500F538AA /* FeedCell.swift */,
@@ -231,6 +231,7 @@
 		A9ACD99021C6716600F538AA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A94552D521CFCDD70059A728 /* VideoViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -239,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				A9FAD4D221CA2B0C0045FF5B /* VideoModel.swift */,
-				A954414D21CC0C3B00FE7C84 /* VideoListModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -365,6 +365,7 @@
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -383,6 +384,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -397,17 +399,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9ACD96D21C65CE500F538AA /* HomeController.swift in Sources */,
+				A94552D621CFCDD70059A728 /* VideoViewModel.swift in Sources */,
 				A9ACD98321C65F7700F538AA /* Navigator.swift in Sources */,
 				A9ACD97321C65CE500F538AA /* CustomImageView.swift in Sources */,
 				A9ACD98021C65F2400F538AA /* MainNavigationController.swift in Sources */,
 				A9ACD96F21C65CE500F538AA /* VideoCell.swift in Sources */,
-				A9ACD96B21C65CE500F538AA /* ApiService.swift in Sources */,
 				A9706CE221C815A200447D83 /* MenuCell.swift in Sources */,
 				A9ACD97621C65CE500F538AA /* FeedCell.swift in Sources */,
 				A9706CE521C815F800447D83 /* BaseCell.swift in Sources */,
 				A9ACD98A21C6652C00F538AA /* ReuseableView.swift in Sources */,
 				A9ACD97A21C65CE500F538AA /* Video.swift in Sources */,
 				A9ACD96E21C65CE500F538AA /* TrendingCell.swift in Sources */,
+				A919CBF021D0F02000EA03FF /* VideoCategoryType.swift in Sources */,
 				A954415021CC0EF100FE7C84 /* VideoAPI+Parameters.swift in Sources */,
 				A9FAD4D021C8F8780045FF5B /* VideoAPI.swift in Sources */,
 				A9ACD97B21C65CE500F538AA /* VideoLauncher.swift in Sources */,
@@ -422,7 +425,6 @@
 				A9ACD97421C65CE500F538AA /* SettingName.swift in Sources */,
 				A954415221CC0EFE00FE7C84 /* VideoAPI+Route.swift in Sources */,
 				A9FAD4D321CA2B0C0045FF5B /* VideoModel.swift in Sources */,
-				A954414E21CC0C3B00FE7C84 /* VideoListModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

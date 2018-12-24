@@ -18,4 +18,5 @@ target 'MVVM-RxSwift-Youtube-Clone' do
 
     pod 'Kingfisher'
 	pod 'SnapKit'
+    pod 'SwiftyJSON'
 end

@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import RxSwift
 import SnapKit
 
 class HomeController: UIViewController {
     
-    var videos: [Video]?
+    var videoList: [VideoModel]?
     let titles = ["Home", "Trending", "Subscriptions", "Account"]
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
@@ -32,11 +33,12 @@ class HomeController: UIViewController {
         setupView()
         visuallize()
         setupConstraint()
+        bind()
     }
     
     func setupView() {
         setupMenuBar()
-        fetchVideos()
+//        fetchVideos()
         setupNavBarButtons()
         setupCollectionView()
     }
@@ -70,12 +72,23 @@ class HomeController: UIViewController {
         menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
     }
     
-    func fetchVideos() {
-        ApiService.shared.fetchVideos { (videos: [Video]) in
-            self.videos = videos
-            self.collectionView.reloadData()
-        }
+    func bind() {
+//        vm.videoListVariable.asObservable()
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(onNext: { [weak self] videoList in
+//                guard let me = self else { return }
+//                me.videoList = videoList
+//                me.collectionView.reloadData()
+//            })
+//            .disposed(by: bag)
     }
+    
+//    func fetchVideos() {
+//        ApiService.shared.fetchVideos { (videos: [Video]) in
+//            self.videos = videos
+//            self.collectionView.reloadData()
+//        }
+//    }
     
     private func setupMenuBar() {
         let redView = UIView()

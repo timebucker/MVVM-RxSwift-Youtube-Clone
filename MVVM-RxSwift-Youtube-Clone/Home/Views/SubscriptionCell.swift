@@ -9,11 +9,7 @@
 import UIKit
 
 class SubscriptionCell: FeedCell {
-    
-    override func fetchVideos() {
-        ApiService.shared.fetchSubscriptionFeed { (videos) in
-            self.videos = videos
-            self.collectionView.reloadData()
-        }
+    override func setCategoryId() {
+        vm.categoryId = VideoCategoryType.sport.rawValue
     }
 }

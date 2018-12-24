@@ -7,57 +7,43 @@
 //
 
 import UIKit
-
-
+import Kingfisher
 
 class VideoCell: BaseCell {
     
-    var video: Video? {
+    var video: VideoModel? {
         didSet {
-            titleLabel.text = video?.title
+                guard let video = video else { return }
             
-            setupThumbnailImage()
+                let title = video.title
+                titleLabel.text = title
             
-            setupProfileImage()
+                thumbnailImageView.kf.setImage(with: URL(unsafeString: video.thumbnailURL))
+                userProfileImageView.kf.setImage(with: URL(unsafeString: video.channelAvatarURL))
             
-            if let channelName = video?.channel?.name, let numberOfViews = video?.numberOfViews {
-                
+                let channelName = video.channelName
+                let numberOfViews = video.viewCount
+            
                 let numberFormatter = NumberFormatter()
                 numberFormatter.numberStyle = .decimal
-                
-                let subtitleText = "\(channelName) • \(numberFormatter.string(from: NSNumber(value: numberOfViews))!) • 2 years ago "
+            
+                let subtitleText = "\(channelName) • \(numberFormatter.string(from: NSNumber(value: numberOfViews))!) • 1 month ago "
                 subtitleTextView.text = subtitleText
-            }
             
             //measure title text
-            if let title = video?.title {
+            
                 let size = CGSize(width: frame.width - 16 - 44 - 8 - 16, height: 1000)
                 let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
-                let estimatedRect = NSString(string: title).boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], context: nil)
+                let estimatedRect = NSString(string: title ?? "").boundingRect(with: size, options: options, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)], context: nil)
                 
                 if estimatedRect.size.height > 20 {
                     titleLabelHeightConstraint?.constant = 44
                 } else {
                     titleLabelHeightConstraint?.constant = 20
                 }
-            }
-            
-            
         }
     }
-    
-    func setupProfileImage() {
-        if let profileImageUrl = video?.channel?.profileImageName {
-            userProfileImageView.loadImageUsingUrlString(urlString: profileImageUrl)
-        }
-    }
-    
-    func setupThumbnailImage() {
-        if let thumbnailImageUrl = video?.thumbnailImageName {
-            thumbnailImageView.loadImageUsingUrlString(urlString: thumbnailImageUrl)
-        }
-    }
-    
+
     let thumbnailImageView: CustomImageView = {
         let imageView = CustomImageView()
         imageView.image = UIImage(named: "taylor_swift_blank_space")

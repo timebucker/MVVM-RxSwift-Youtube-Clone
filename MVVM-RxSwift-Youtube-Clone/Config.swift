@@ -15,9 +15,7 @@ final class Config {
     var paramDefault: [String: Any] {
         return [
             "part": "snippet",
-            "type": "video",
-            "key": self.APIKey,
-            "maxResults": 10
+            "key": self.APIKey
         ]
     }
     

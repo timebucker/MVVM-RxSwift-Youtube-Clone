@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import Kingfisher
+import RxSwift
 
 class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    let vm = VideoViewModel()
+    let bag = DisposeBag()
+    let videoList = [VideoModel]()
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -19,23 +24,10 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         return cv
     }()
     
-    var videos: [Video]?
-    
-    let cellId = "cellId"
-    
-    func fetchVideos() {
-        ApiService.shared.fetchVideos { (videos: [Video]) in
-            
-            self.videos = videos
-            self.collectionView.reloadData()
-            
-        }
-    }
-    
     override func setupViews() {
         super.setupViews()
         
-        fetchVideos()
+        setCategoryId()
         
         backgroundColor = .brown
         
@@ -46,17 +38,21 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         addConstraintsWithFormat("H:|[v0]|", views: collectionView)
         addConstraintsWithFormat("V:|[v0]|", views: collectionView)
         
-        collectionView.register(VideoCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(VideoCell.self, forCellWithReuseIdentifier: VideoCell.reuseIdentifier)
+    }
+    
+    func setCategoryId(){
+        vm.categoryId = VideoCategoryType.music.rawValue
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return videos?.count ?? 0
+        return videoList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! VideoCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCell.reuseIdentifier, for: indexPath) as! VideoCell
         
-        cell.video = videos?[indexPath.item]
+        cell.video = videoList[indexPath.row]
         
         return cell
     }

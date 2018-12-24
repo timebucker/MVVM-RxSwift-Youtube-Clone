@@ -26,3 +26,9 @@ extension UIView {
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: format, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
     }
 }
+
+extension URL {
+    init?(unsafeString: String?) {
+        self.init(string: unsafeString ?? "")
+    }
+}
