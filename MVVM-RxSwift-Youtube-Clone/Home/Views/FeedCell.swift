@@ -13,7 +13,7 @@ import RxSwift
 class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     let vm = VideoViewModel()
     let bag = DisposeBag()
-    let videoList = [VideoModel]()
+    var videoList = [VideoModel]()
     
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -26,9 +26,13 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     
     override func setupViews() {
         super.setupViews()
-        
+        collectionView.register(VideoCell.self, forCellWithReuseIdentifier: VideoCell.reuseIdentifier)
         setCategoryId()
-        
+        visualize()
+        bind()
+    }
+    
+    func visualize() {
         backgroundColor = .brown
         
         collectionView.contentInset = .init(top: 50, left: 0, bottom: 0, right: 0)
@@ -37,8 +41,15 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         addSubview(collectionView)
         addConstraintsWithFormat("H:|[v0]|", views: collectionView)
         addConstraintsWithFormat("V:|[v0]|", views: collectionView)
-        
-        collectionView.register(VideoCell.self, forCellWithReuseIdentifier: VideoCell.reuseIdentifier)
+    }
+    
+    func bind() {
+        vm.videoListObservable.subscribe(onNext: { [weak self] videos in
+            guard let me = self else { return }
+            me.videoList = videos
+            me.collectionView.reloadData()
+        })
+        .disposed(by: bag)
     }
     
     func setCategoryId(){

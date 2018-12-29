@@ -14,6 +14,8 @@ extension VideoAPI {
         switch self {
         case .getVideoList:
             return .get("/search")
+        case .getChannelInfo:
+            return .get("/channels")
         }
     }
 }

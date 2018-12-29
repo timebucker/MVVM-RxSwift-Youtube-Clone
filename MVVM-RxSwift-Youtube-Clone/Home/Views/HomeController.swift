@@ -11,8 +11,6 @@ import RxSwift
 import SnapKit
 
 class HomeController: UIViewController {
-    
-    var videoList: [VideoModel]?
     let titles = ["Home", "Trending", "Subscriptions", "Account"]
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
@@ -73,22 +71,8 @@ class HomeController: UIViewController {
     }
     
     func bind() {
-//        vm.videoListVariable.asObservable()
-//            .observeOn(MainScheduler.instance)
-//            .subscribe(onNext: { [weak self] videoList in
-//                guard let me = self else { return }
-//                me.videoList = videoList
-//                me.collectionView.reloadData()
-//            })
-//            .disposed(by: bag)
     }
     
-//    func fetchVideos() {
-//        ApiService.shared.fetchVideos { (videos: [Video]) in
-//            self.videos = videos
-//            self.collectionView.reloadData()
-//        }
-//    }
     
     private func setupMenuBar() {
         let redView = UIView()

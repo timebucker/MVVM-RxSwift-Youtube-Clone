@@ -188,10 +188,10 @@
 		A9ACD98421C6632C00F538AA /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				A9FAD4CF21C8F8780045FF5B /* VideoAPI.swift */,
-				A954414F21CC0EF100FE7C84 /* VideoAPI+Parameters.swift */,
-				A954415121CC0EFE00FE7C84 /* VideoAPI+Route.swift */,
 				A954415521CC138F00FE7C84 /* APIProvider.swift */,
+				A9FAD4CF21C8F8780045FF5B /* VideoAPI.swift */,
+				A954415121CC0EFE00FE7C84 /* VideoAPI+Route.swift */,
+				A954414F21CC0EF100FE7C84 /* VideoAPI+Parameters.swift */,
 			);
 			path = APIs;
 			sourceTree = "<group>";
