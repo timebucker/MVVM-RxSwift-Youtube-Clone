@@ -16,6 +16,8 @@ extension VideoAPI {
             return .get("/search")
         case .getChannelInfo:
             return .get("/channels")
+        case .getTrendingVideos:
+            return .get("/videos")
         }
     }
 }

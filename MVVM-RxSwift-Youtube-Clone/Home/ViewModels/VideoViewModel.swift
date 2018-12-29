@@ -12,8 +12,11 @@ import SwiftyJSON
 
 class VideoViewModel {
     let bag = DisposeBag()
+
     var categoryId: String?
-    lazy var videoListObservable = APIProvider.default.fetchVideoSnippet(categoryId: categoryId ?? "10")
+    var videosType: VideoListType?
+    
+    lazy var videoListObservable = APIProvider.default.fetchVideos(videosType: videosType ?? VideoListType.normal, categoryId: categoryId ?? "10")
     
     init(){
     }

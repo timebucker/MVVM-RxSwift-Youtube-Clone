@@ -21,6 +21,8 @@ extension VideoAPI {
             parameter["maxResults"] = 5
         case .getChannelInfo(let channelId):
             parameter["id"] = channelId
+        case .getTrendingVideos:
+            parameter["chart"] = "mostPopular"
         default:
             break
         }

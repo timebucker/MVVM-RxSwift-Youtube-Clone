@@ -11,7 +11,7 @@ import RxSwift
 import SnapKit
 
 class HomeController: UIViewController {
-    let titles = ["Home", "Trending", "Subscriptions", "Account"]
+    let titles = ["Trending", "Music", "Gaming", "Sport"]
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     lazy var menuBar: MenuBar = {
@@ -31,12 +31,10 @@ class HomeController: UIViewController {
         setupView()
         visuallize()
         setupConstraint()
-        bind()
     }
     
     func setupView() {
         setupMenuBar()
-//        fetchVideos()
         setupNavBarButtons()
         setupCollectionView()
     }
@@ -70,10 +68,6 @@ class HomeController: UIViewController {
         menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
     }
     
-    func bind() {
-    }
-    
-    
     private func setupMenuBar() {
         let redView = UIView()
         redView.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)
@@ -92,8 +86,9 @@ class HomeController: UIViewController {
         collectionView.dataSource = self
         
         collectionView.register(FeedCell.self, forCellWithReuseIdentifier: FeedCell.reuseIdentifier)
-        collectionView.register(TrendingCell.self, forCellWithReuseIdentifier: TrendingCell.reuseIdentifier)
-        collectionView.register(SubscriptionCell.self, forCellWithReuseIdentifier: SubscriptionCell.reuseIdentifier)
+        collectionView.register(MusicCell.self, forCellWithReuseIdentifier: MusicCell.reuseIdentifier)
+        collectionView.register(GamingCell.self, forCellWithReuseIdentifier: GamingCell.reuseIdentifier)
+         collectionView.register(SportCell.self, forCellWithReuseIdentifier: SportCell.reuseIdentifier)
     }
     
     func setupNavBarButtons() {
@@ -148,9 +143,11 @@ extension HomeController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let identifier: String
         if indexPath.item == 1 {
-            identifier = TrendingCell.reuseIdentifier
+            identifier = MusicCell.reuseIdentifier
         } else if indexPath.item == 2 {
-            identifier = SubscriptionCell.reuseIdentifier
+            identifier = GamingCell.reuseIdentifier
+        } else if indexPath.item == 3 {
+            identifier = SportCell.reuseIdentifier
         } else {
             identifier = FeedCell.reuseIdentifier
         }

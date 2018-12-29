@@ -15,7 +15,8 @@ final class Config {
     var paramDefault: [String: Any] {
         return [
             "part": "snippet",
-            "key": self.APIKey
+            "key": self.APIKey,
+            "regionCode": "vn"
         ]
     }
     

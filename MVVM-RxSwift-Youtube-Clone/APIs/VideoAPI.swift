@@ -13,6 +13,7 @@ import MoyaSugar
 enum VideoAPI: SugarTargetType {
     case getVideoList(categoryId: String)
     case getChannelInfo(channelId: String)
+    case getTrendingVideos
 }
 
 extension VideoAPI {

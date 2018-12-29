@@ -8,8 +8,9 @@
 
 import UIKit
 
-class TrendingCell: FeedCell {
-    override func setCategoryId() {
+class GamingCell: FeedCell {
+    override func setUpRequestParams() {
         vm.categoryId = VideoCategoryType.gaming.rawValue
+        vm.videosType = .normal
     }
 }

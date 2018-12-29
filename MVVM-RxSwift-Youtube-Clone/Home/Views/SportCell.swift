@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SubscriptionCell: FeedCell {
-    override func setCategoryId() {
+class SportCell: FeedCell {
+    override func setUpRequestParams() {
         vm.categoryId = VideoCategoryType.sport.rawValue
+        vm.videosType = .normal
     }
 }

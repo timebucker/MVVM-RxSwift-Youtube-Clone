@@ -27,7 +27,7 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
     override func setupViews() {
         super.setupViews()
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: VideoCell.reuseIdentifier)
-        setCategoryId()
+        setUpRequestParams()
         visualize()
         bind()
     }
@@ -52,8 +52,8 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         .disposed(by: bag)
     }
     
-    func setCategoryId(){
-        vm.categoryId = VideoCategoryType.music.rawValue
+    func setUpRequestParams(){
+        vm.videosType = .trending
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -81,6 +81,4 @@ class FeedCell: BaseCell, UICollectionViewDataSource, UICollectionViewDelegate, 
         let videoLauncher = VideoLauncher()
         videoLauncher.showVideoPlayer()
     }
-    
-    
 }
