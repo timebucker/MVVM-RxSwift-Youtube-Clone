@@ -22,7 +22,7 @@ class SettingCell: BaseCell {
     
     var setting: Setting? {
         didSet {
-            nameLabel.text = setting?.name.rawValue
+            nameLabel.text = setting?.name
             
             if let imageName = setting?.imageName {
                 iconImageView.image = UIImage(named: imageName)?.withRenderingMode(.alwaysTemplate)

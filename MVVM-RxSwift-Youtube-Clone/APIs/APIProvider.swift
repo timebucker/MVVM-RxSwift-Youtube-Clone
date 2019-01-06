@@ -42,7 +42,7 @@ final class APIProvider: MoyaProvider<VideoAPI> {
                             let video = VideoModel()
                             let id = videoData["id"]["videoId"].string
                             video.videoId = id
-                            video.videoURL = "https://www.youtube.com/watch?v=\(String(describing: id)))"
+                            video.videoURL = "https://www.youtube.com/watch?v=\(String(describing: id ?? "")))"
                             
                             let videoSnippet = videoData["snippet"]
                             video.thumbnailURL = videoSnippet["thumbnails"]["medium"]["url"].string
@@ -73,9 +73,9 @@ final class APIProvider: MoyaProvider<VideoAPI> {
                         var videos = [VideoModel]()
                         for videoData in videosData {
                             let video = VideoModel()
-                            let id = videoData["id"]["videoId"].string
+                            let id = videoData["id"].string
                             video.videoId = id
-                            video.videoURL = "https://www.youtube.com/watch?v=\(String(describing: id)))"
+                            video.videoURL = "https://www.youtube.com/watch?v=\(String(describing: id ?? "")))"
                             
                             let videoSnippet = videoData["snippet"]
                             video.thumbnailURL = videoSnippet["thumbnails"]["medium"]["url"].string

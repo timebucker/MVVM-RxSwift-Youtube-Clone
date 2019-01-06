@@ -11,7 +11,8 @@ import RxSwift
 import SnapKit
 
 class HomeController: UIViewController {
-    let titles = ["Trending", "Music", "Gaming", "Sport"]
+    let titles = [Localization.trending.localized(), Localization.music.localized(),
+                  Localization.gaming.localized(), Localization.sport.localized()]
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     
     lazy var menuBar: MenuBar = {
@@ -103,7 +104,7 @@ class HomeController: UIViewController {
     func showControllerForSetting(setting: Setting) {
         let dummySettingsViewController = UIViewController()
         dummySettingsViewController.view.backgroundColor = UIColor.white
-        dummySettingsViewController.navigationItem.title = setting.name.rawValue
+        dummySettingsViewController.navigationItem.title = setting.name
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         navigationController?.pushViewController(dummySettingsViewController, animated: true)

@@ -1,0 +1,22 @@
+/* 
+  vi.strings
+  MVVM-RxSwift-Youtube-Clone
+
+  Created by Nguyen D.Nhan on 1/7/19.
+  Copyright © 2019 Nguyen D.Nhan. All rights reserved.
+*/
+"home" = "Trang chủ";
+
+"trending" = "Thịnh hành";
+"music" = "Âm nhạc";
+"gaming" = "Trò chơi";
+"sport" = "Thể thao";
+"search" = "Tìm kiếm";
+
+//setting
+"setting" = "Cài đặt";
+"termAndPrivacy" = "Chính sách và bảo mật";
+"sendFeedback" = "Gửi phản hồi";
+"help" = "Trợ giúp";
+"switchAccount" = "Đổi tài khoản";
+"cancelSetting" = "Thoát cài đặt";

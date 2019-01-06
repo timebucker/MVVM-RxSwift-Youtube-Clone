@@ -9,6 +9,8 @@
 import Foundation
 
 final class Config {
+    static let shared = Config()
+    
     let APIKey = "AIzaSyCgmFidZgSejS7od9Z0ASjnIkOLfJXMbEY"
     let baseURL = "https://www.googleapis.com/youtube/v3"
     
@@ -19,8 +21,6 @@ final class Config {
             "regionCode": "vn"
         ]
     }
-    
-    static let shared = Config()
     
     private init(){
         

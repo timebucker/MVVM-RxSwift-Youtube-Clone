@@ -9,10 +9,10 @@
 import UIKit
 
 class Setting: NSObject {
-    let name: SettingName
+    let name: String
     let imageName: String
     
-    init(name: SettingName, imageName: String) {
+    init(name: String, imageName: String) {
         self.name = name
         self.imageName = imageName
     }
@@ -35,10 +35,14 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
     let cellHeight: CGFloat = 50
     
     let settings: [Setting] = {
-        let settingsSetting = Setting(name: .settings, imageName: "settings")
+        let setting = Setting(name: Localization.setting.localized(), imageName: "settings")
+        let termsPrivacy = Setting(name: Localization.termAndPrivacy.localized(), imageName: "privacy")
+        let feedback = Setting(name: Localization.sendFeedback.localized(), imageName: "feedback")
+        let help = Setting(name: Localization.help.localized(), imageName: "help")
+        let switchAccount = Setting(name: Localization.switchAccount.localized(), imageName: "switch_account")
+        let cancel = Setting(name: Localization.cancelSetting.localized(), imageName: "cancel")
         
-        let cancelSetting = Setting(name: .cancel, imageName: "cancel")
-        return [settingsSetting, Setting(name: .termsPrivacy, imageName: "privacy"), Setting(name: .sendFeedback, imageName: "feedback"), Setting(name: .help, imageName: "help"), Setting(name: .switchAccount, imageName: "switch_account"), cancelSetting]
+        return [setting, termsPrivacy, feedback, help, switchAccount, cancel]
     }()
     
     func showSettings() {
@@ -77,9 +81,6 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
                 self.collectionView.frame = CGRect(x: 0, y: window.frame.height, width: self.collectionView.frame.width, height: self.collectionView.frame.height)
             }
         }, completion: { (_) in
-            if setting.name != .cancel {
-                self.homeController?.showControllerForSetting(setting: setting)
-            }
         })
     }
     
@@ -87,6 +88,9 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
         
         let setting = self.settings[indexPath.item]
         handleDismiss(setting: setting)
+        if setting.name != Localization.cancelSetting.localized() {
+            self.homeController?.showControllerForSetting(setting: setting)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

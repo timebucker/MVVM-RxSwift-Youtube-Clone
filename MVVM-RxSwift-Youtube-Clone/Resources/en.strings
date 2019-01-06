@@ -1,0 +1,22 @@
+/* 
+  en.strings
+  MVVM-RxSwift-Youtube-Clone
+
+  Created by Nguyen D.Nhan on 1/7/19.
+  Copyright © 2019 Nguyen D.Nhan. All rights reserved.
+*/
+"home" = "Home";
+
+"trending" = "Trending";
+"music" = "Music";
+"gaming" = "Gaming";
+"sport" = "Sport";
+"search" = "Search";
+
+//setting
+"setting" = "Setting";
+"termAndPrivacy" = "Term & privacy policy";
+"sendFeedback" = "Send Feedback";
+"help" = "Help";
+"switchAccount" = "Switch Account";
+"cancelSetting" = "Cancel";

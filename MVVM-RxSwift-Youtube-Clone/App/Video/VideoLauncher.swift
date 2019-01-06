@@ -76,8 +76,6 @@ class VideoPlayerView: UIView {
                 //perhaps do something later here
             })
         }
-        
-        
     }
     
     var isPlaying = false
@@ -100,20 +98,26 @@ class VideoPlayerView: UIView {
         return view
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    var videoSourceURL = String()
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented"); }
+    
+    init() {
+        let height = UIScreen.main.bounds.width * 9 / 16
+        let videoPlayerFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: height)
+        super.init(frame: videoPlayerFrame)
         
         setupGradientLayer()
         
-        setupPlayerView()
-        
         controlsContainerView.frame = frame
         addSubview(controlsContainerView)
-        
         controlsContainerView.addSubview(activityIndicatorView)
         activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
+        backgroundColor = .black
+    }
+    
+    func addPlayerControl(){
         controlsContainerView.addSubview(pausePlayButton)
         pausePlayButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         pausePlayButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
@@ -137,16 +141,13 @@ class VideoPlayerView: UIView {
         videoSlider.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         videoSlider.leftAnchor.constraint(equalTo: currentTimeLabel.rightAnchor).isActive = true
         videoSlider.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        
-        backgroundColor = .black
     }
     
     var player: AVPlayer?
     
-    private func setupPlayerView() {
+    func addPlayerView(videoSourceURL: String) {
         //warning: use your own video url here, the bandwidth for google firebase storage will run out as more and more people use this file
-        let urlString = "https://firebasestorage.googleapis.com/v0/b/gameofchats-762ca.appspot.com/o/message_movies%2F12323439-9729-4941-BA07-2BAE970967C7.mov?alt=media&token=3e37a093-3bc8-410f-84d3-38332af9c726"
-        if let url = URL(string: urlString) {
+        if let url = URL(string: videoSourceURL) {
             player = AVPlayer(url: url)
             
             let playerLayer = AVPlayerLayer(player: player)
@@ -158,7 +159,6 @@ class VideoPlayerView: UIView {
             player?.addObserver(self, forKeyPath: "currentItem.loadedTimeRanges", options: .new, context: nil)
             
             //track player progress
-            
             let interval = CMTime(value: 1, timescale: 2)
             player?.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main, using: { (progressTime) in
                 
@@ -205,15 +205,11 @@ class VideoPlayerView: UIView {
             }
         }
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
 class VideoLauncher: NSObject {
     
-    func showVideoPlayer() {
+    func showVideoPlayer(videoID: String) {
         print("Showing video player animation....")
         
         if let keyWindow = UIApplication.shared.keyWindow {
@@ -222,12 +218,8 @@ class VideoLauncher: NSObject {
             
             view.frame = CGRect(x: keyWindow.frame.width - 10, y: keyWindow.frame.height - 10, width: 10, height: 10)
             
-            //16 x 9 is the aspect ratio of all HD videos
-            let height = keyWindow.frame.width * 9 / 16
-            let videoPlayerFrame = CGRect(x: 0, y: 0, width: keyWindow.frame.width, height: height)
-            let videoPlayerView = VideoPlayerView(frame: videoPlayerFrame)
+            let videoPlayerView = VideoPlayerView()
             view.addSubview(videoPlayerView)
-            
             keyWindow.addSubview(view)
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -235,6 +227,12 @@ class VideoLauncher: NSObject {
             }) { (_) in
                 UIApplication.shared.setStatusBarHidden(true, with: .fade)
             }
+            
+            YouTubeExtractor.instance.info(id: videoID, quality: .x720, completion: { url in
+                print("Nhan123: \(url!)")
+                videoPlayerView.addPlayerView(videoSourceURL: url?.absoluteString ?? "")
+                videoPlayerView.addPlayerControl()
+            })
         }
     }
 }
