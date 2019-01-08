@@ -24,4 +24,8 @@ enum Localization {
     case help
     case switchAccount
     case cancelSetting
+    
+    // display setting
+    case appTheme
+    case appLanguage
 }

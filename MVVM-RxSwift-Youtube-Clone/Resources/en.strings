@@ -20,3 +20,7 @@
 "help" = "Help";
 "switchAccount" = "Switch Account";
 "cancelSetting" = "Cancel";
+
+//display setting
+"appTheme" = "Theme";
+"appLanguage" = "Language";

@@ -34,7 +34,9 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
     let cellId = "cellId"
     let cellHeight: CGFloat = 50
     
-    let settings: [Setting] = {
+    var settings = [Setting]()
+    
+    func refreshForLanguageChange() {
         let setting = Setting(name: Localization.setting.localized(), imageName: "settings")
         let termsPrivacy = Setting(name: Localization.termAndPrivacy.localized(), imageName: "privacy")
         let feedback = Setting(name: Localization.sendFeedback.localized(), imageName: "feedback")
@@ -42,8 +44,9 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
         let switchAccount = Setting(name: Localization.switchAccount.localized(), imageName: "switch_account")
         let cancel = Setting(name: Localization.cancelSetting.localized(), imageName: "cancel")
         
-        return [setting, termsPrivacy, feedback, help, switchAccount, cancel]
-    }()
+        settings = [setting, termsPrivacy, feedback, help, switchAccount, cancel]
+        self.collectionView.reloadData()
+    }
     
     func showSettings() {
         if let window = UIApplication.shared.keyWindow {
@@ -85,7 +88,8 @@ class SettingsLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        homeController?.menuBar.backgroundColor = .blue
+        homeController?.menuBar.layoutIfNeeded()
         let setting = self.settings[indexPath.item]
         handleDismiss(setting: setting)
         if setting.name != Localization.cancelSetting.localized() {

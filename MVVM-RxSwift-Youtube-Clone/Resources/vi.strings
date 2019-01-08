@@ -20,3 +20,7 @@
 "help" = "Trợ giúp";
 "switchAccount" = "Đổi tài khoản";
 "cancelSetting" = "Thoát cài đặt";
+
+//display setting
+"appTheme" = "Chủ đề";
+"appLanguage" = "Ngôn ngữ";

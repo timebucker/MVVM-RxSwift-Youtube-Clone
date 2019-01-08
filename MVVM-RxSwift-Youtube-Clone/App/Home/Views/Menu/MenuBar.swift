@@ -47,9 +47,11 @@ class MenuBar: UIView {
     }
     
     func visualize() {
-        collectionView.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)
-        
         horizontalBarView.backgroundColor = UIColor(white: 0.95, alpha: 1)
+    }
+    
+    override func layoutIfNeeded() {
+        collectionView.backgroundColor = Color.appMain
     }
     
     func setupCollectionView() {
@@ -72,7 +74,7 @@ extension MenuBar: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuCell.reuseIdentifier, for: indexPath) as! MenuCell
         
         cell.imageView.image = UIImage(named: imageNames[indexPath.item])?.withRenderingMode(.alwaysTemplate)
-        cell.tintColor = UIColor.rgb(red: 91, green: 14, blue: 13)
+        cell.tintColor = Color.menuCell
         
         return cell
     }

@@ -21,7 +21,7 @@ extension Localization {
 }
 
 
-private final class LocalizeService {
+final class LocalizeService {
     static let shared = LocalizeService()
     
     let supportedLocales = ["en", "vi"]
@@ -37,5 +37,16 @@ private final class LocalizeService {
         }
         
         locale = supportedLocales.first!
+    }
+    
+    public func setLocale(locale: String) {
+        switch locale {
+        case "en":
+            self.locale = supportedLocales[0]
+        case "vi":
+            self.locale = supportedLocales[1]
+        default:
+            break;
+        }
     }
 }

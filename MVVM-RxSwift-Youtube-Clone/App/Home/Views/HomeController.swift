@@ -11,9 +11,10 @@ import RxSwift
 import SnapKit
 
 class HomeController: UIViewController {
-    let titles = [Localization.trending.localized(), Localization.music.localized(),
-                  Localization.gaming.localized(), Localization.sport.localized()]
+    var titles = [String]()
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    let titleLabel = UILabel()
+    let redView = UIView()
     
     lazy var menuBar: MenuBar = {
         let mb = MenuBar()
@@ -41,15 +42,10 @@ class HomeController: UIViewController {
     }
     
     func visuallize() {
-        navigationController?.hidesBarsOnSwipe = true
-        navigationController?.navigationBar.isTranslucent = false
-        
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        titleLabel.text = "Home"
+        titleLabel.frame = CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height)
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
-        navigationItem.title = "Home"
         
         collectionView.backgroundColor = .white
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
@@ -61,6 +57,15 @@ class HomeController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = Localization.home.localized()
+        self.titles = [Localization.trending.localized(), Localization.music.localized(),
+         Localization.gaming.localized(), Localization.sport.localized()]
+        titleLabel.text = titles[0]
+        menuBar.layoutIfNeeded()
+        settingsLauncher.refreshForLanguageChange()
+    }
+    
     func setupConstraint() {
         collectionView.snp.makeConstraints { (make) in
             make.leading.trailing.top.bottom.equalToSuperview()
@@ -70,12 +75,7 @@ class HomeController: UIViewController {
     }
     
     private func setupMenuBar() {
-        let redView = UIView()
-        redView.backgroundColor = UIColor.rgb(red: 230, green: 32, blue: 31)
         view.addSubview(collectionView)
-        view.addSubview(redView)
-        view.addConstraintsWithFormat("H:|[v0]|", views: redView)
-        view.addConstraintsWithFormat("V:[v0(50)]", views: redView)
         
         view.addSubview(menuBar)
         view.addConstraintsWithFormat("H:|[v0]|", views: menuBar)
@@ -102,12 +102,11 @@ class HomeController: UIViewController {
     }
     
     func showControllerForSetting(setting: Setting) {
-        let dummySettingsViewController = UIViewController()
-        dummySettingsViewController.view.backgroundColor = UIColor.white
-        dummySettingsViewController.navigationItem.title = setting.name
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationController?.pushViewController(dummySettingsViewController, animated: true)
+        if setting.name == Localization.setting.localized() {
+            Navigator.shared.showSettingView(VC: DisplaySettingViewController(title: setting.name))
+        } else {
+            Navigator.shared.showSettingView(VC: SettingViewController(title: setting.name))
+        }
     }
     
     @objc func handleMore() {
