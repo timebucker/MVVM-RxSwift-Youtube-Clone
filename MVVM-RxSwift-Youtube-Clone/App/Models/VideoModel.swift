@@ -28,15 +28,5 @@ class VideoModel {
         channelName = ""
         channelAvatarURL = ""
     }
-    
-//    init(id: String, url: String, title: String, thumbnail: String, viewCount: Double, channelName: String, channelAvatar: String) {
-//        videoId = id
-//        videoURL = "https://www.youtube.com/watch?v=\(String(describing: videoId))"
-//        title = title
-//        thumbnailURL = thumbnail
-//        viewCount = viewCount
-//        channelName = channelName
-//        channelAvatar = channelAvatar
-//    }
 }
 

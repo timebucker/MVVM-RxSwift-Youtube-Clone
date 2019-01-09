@@ -14,4 +14,5 @@ struct Color {
     
     static let menuCell = UIColor.rgb(red: 91, green: 14, blue: 13)
     static let customRed = UIColor.rgb(red: 230, green: 32, blue: 31)
+    static let customOrange = UIColor.rgb(red: 255, green: 102, blue: 0)
 }

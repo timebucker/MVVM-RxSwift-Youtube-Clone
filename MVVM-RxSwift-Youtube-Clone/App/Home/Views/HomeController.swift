@@ -62,6 +62,8 @@ class HomeController: UIViewController {
         self.titles = [Localization.trending.localized(), Localization.music.localized(),
          Localization.gaming.localized(), Localization.sport.localized()]
         titleLabel.text = titles[0]
+        scrollToMenuIndex(menuIndex: 0)
+        menuBar.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: .centeredHorizontally)
         menuBar.layoutIfNeeded()
         settingsLauncher.refreshForLanguageChange()
     }
@@ -120,7 +122,6 @@ class HomeController: UIViewController {
     func scrollToMenuIndex(menuIndex: Int) {
         let indexPath = IndexPath(item: menuIndex, section: 0)
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        
         setTitleForIndex(index: menuIndex)
     }
     

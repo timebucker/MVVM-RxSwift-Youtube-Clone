@@ -16,8 +16,8 @@ class DisplaySettingViewController: SettingViewController {
     let languageLabel = UILabel()
     let themeLabel = UILabel()
     
-    var languageOption = PublishSubject<Int>()
-    var themeOption = PublishSubject<Int>()
+    var languageOption = BehaviorSubject<Int>(value: 0)
+    var themeOption = BehaviorSubject<Int>(value: 0)
     
     let languageButton1 = UIButton()
     let languageButton2 = UIButton()
@@ -29,6 +29,14 @@ class DisplaySettingViewController: SettingViewController {
     
     override init(title: String) {
         super.init(title: title)
+        
+        if Localization.getLocale() == "vi" {
+            languageOption.onNext(1)
+        }
+        
+        if Color.appMain.isEqual(Color.customOrange) {
+            themeOption.onNext(1)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -60,7 +68,7 @@ class DisplaySettingViewController: SettingViewController {
         
         themeButton1.backgroundColor = Color.customRed
         
-        themeButton2.backgroundColor = .orange
+        themeButton2.backgroundColor = Color.customOrange
         
         languageButton1.setTitle("English", for: .normal)
         languageButton1.setTitleColor(.black, for: .normal)
@@ -154,8 +162,8 @@ class DisplaySettingViewController: SettingViewController {
                 case 1:
                     self.addButtonBorder(button: self.themeButton2)
                     self.removeButtonBorder(button: self.themeButton1)
-                    Navigator.shared.navigationVC.navigationBar.barTintColor = .orange
-                    Color.appMain = .orange
+                    Navigator.shared.navigationVC.navigationBar.barTintColor = Color.customOrange
+                    Color.appMain = Color.customOrange
                 default:
                     break;
                 }
