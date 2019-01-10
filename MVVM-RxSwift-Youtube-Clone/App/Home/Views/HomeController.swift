@@ -12,9 +12,17 @@ import SnapKit
 
 class HomeController: UIViewController {
     var titles = [String]()
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+//    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    
+    let scrollView = UIScrollView()
     let titleLabel = UILabel()
     let redView = UIView()
+    var screenWidth: CGFloat? = nil
+    
+    let trendingVC = FeedViewController(vm: VideoViewModel(videosType: .trending, categotyId: .music))
+    let musicVC = FeedViewController(vm: VideoViewModel(videosType: .normal, categotyId: .music))
+    let gamingVC = FeedViewController(vm: VideoViewModel(videosType: .normal, categotyId: .gaming))
+    let sportVC = FeedViewController(vm: VideoViewModel(videosType: .normal, categotyId: .sport))
     
     lazy var menuBar: MenuBar = {
         let mb = MenuBar()
@@ -33,12 +41,47 @@ class HomeController: UIViewController {
         setupView()
         visuallize()
         setupConstraint()
+        screenWidth = view.frame.width
+  
+        scrollView.isPagingEnabled = true
+        scrollView.backgroundColor = UIColor.brown
+        
+        scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        scrollView.contentOffset = CGPoint(x: 0, y: 0)
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        
+        scrollView.backgroundColor = .white
+        addChild(trendingVC)
+        scrollView.addSubview(trendingVC.view)
+    
+        addChild(musicVC)
+        scrollView.addSubview(musicVC.view)
+        
+        addChild(gamingVC)
+        scrollView.addSubview(gamingVC.view)
+        
+        addChild(sportVC)
+        scrollView.addSubview(sportVC.view)
+
+        scrollView.delegate = self
     }
     
     func setupView() {
+        view.addSubview(scrollView)
         setupMenuBar()
         setupNavBarButtons()
         setupCollectionView()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        scrollView.frame = CGRect(x: 0, y: 50, width: view.frame.width, height: view.frame.height - 50)
+        scrollView.contentSize = CGSize(width: scrollView.frame.width * CGFloat(4), height: scrollView.frame.height)
+        
+        trendingVC.view.frame = CGRect(origin: .zero, size: scrollView.frame.size)
+        musicVC.view.frame = trendingVC.view.frame.offsetBy(dx: trendingVC.view.frame.width, dy: 0)
+        gamingVC.view.frame = musicVC.view.frame.offsetBy(dx: musicVC.view.frame.width, dy: 0)
+        sportVC.view.frame = gamingVC.view.frame.offsetBy(dx: gamingVC.view.frame.width, dy: 0)
     }
     
     func visuallize() {
@@ -47,14 +90,14 @@ class HomeController: UIViewController {
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
         
-        collectionView.backgroundColor = .white
-        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-        collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-        collectionView.isPagingEnabled = true
-        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.scrollDirection = .horizontal
-            flowLayout.minimumLineSpacing = 0
-        }
+//        collectionView.backgroundColor = .white
+//        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+//        collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
+//        collectionView.isPagingEnabled = true
+//        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+//            flowLayout.scrollDirection = .horizontal
+//            flowLayout.minimumLineSpacing = 0
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,15 +112,10 @@ class HomeController: UIViewController {
     }
     
     func setupConstraint() {
-        collectionView.snp.makeConstraints { (make) in
-            make.leading.trailing.top.bottom.equalToSuperview()
-        }
-        
         menuBar.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
     }
     
     private func setupMenuBar() {
-        view.addSubview(collectionView)
         
         view.addSubview(menuBar)
         view.addConstraintsWithFormat("H:|[v0]|", views: menuBar)
@@ -85,13 +123,7 @@ class HomeController: UIViewController {
     }
     
     func setupCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        
-        collectionView.register(FeedCell.self, forCellWithReuseIdentifier: FeedCell.reuseIdentifier)
-        collectionView.register(MusicCell.self, forCellWithReuseIdentifier: MusicCell.reuseIdentifier)
-        collectionView.register(GamingCell.self, forCellWithReuseIdentifier: GamingCell.reuseIdentifier)
-         collectionView.register(SportCell.self, forCellWithReuseIdentifier: SportCell.reuseIdentifier)
+      
     }
     
     func setupNavBarButtons() {
@@ -120,8 +152,7 @@ class HomeController: UIViewController {
     }
     
     func scrollToMenuIndex(menuIndex: Int) {
-        let indexPath = IndexPath(item: menuIndex, section: 0)
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        scrollView.setContentOffset(CGPoint(x: screenWidth! * CGFloat(menuIndex), y: 0), animated: false)
         setTitleForIndex(index: menuIndex)
     }
     
@@ -129,53 +160,45 @@ class HomeController: UIViewController {
         if let titleLabel = navigationItem.titleView as? UILabel {
             titleLabel.text = "  \(titles[index])"
         }
-        
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
 }
 
-extension HomeController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let identifier: String
-        if indexPath.item == 1 {
-            identifier = MusicCell.reuseIdentifier
-        } else if indexPath.item == 2 {
-            identifier = GamingCell.reuseIdentifier
-        } else if indexPath.item == 3 {
-            identifier = SportCell.reuseIdentifier
-        } else {
-            identifier = FeedCell.reuseIdentifier
-        }
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! FeedCell
-
-        return cell
-    }
-}
-
-extension HomeController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
-    }
-    
+extension HomeController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+       
+        let indexScreen = scrollView.contentOffset.x/scrollView.frame.width
+        
+        menuBar.collectionView.selectItem(at: IndexPath(item: Int(indexScreen), section: 0), animated: false, scrollPosition: .centeredHorizontally)
+        
         menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 4
+        
+        if scrollView.contentOffset.y > 0 || scrollView.contentOffset.y < 0 {
+            scrollView.contentOffset.y = 0
+        }
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        let index = Int(targetContentOffset.pointee.x / view.frame.width)
-        let indexPath = IndexPath(item: index, section: 0)
-        menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
-        setTitleForIndex(index: index)
-    }
 }
+
+//extension HomeController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: view.frame.width, height: view.frame.height)
+//    }
+//
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 4
+//    }
+//
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        let index = Int(targetContentOffset.pointee.x / view.frame.width)
+//        let indexPath = IndexPath(item: index, section: 0)
+//        menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+//        setTitleForIndex(index: index)
+//    }
+//}

@@ -10,14 +10,24 @@ import Foundation
 import RxSwift
 import SwiftyJSON
 
-class VideoViewModel {
+final class VideoViewModel {
     let bag = DisposeBag()
-
-    var categoryId: String?
-    var videosType: VideoListType?
+    let videosState = BehaviorSubject<StatedData<[VideoModel], String, Void>>(value: .uninitialized)
     
-    lazy var videoListObservable = APIProvider.default.fetchVideos(videosType: videosType ?? VideoListType.normal, categoryId: categoryId ?? "10")
-    
-    init(){
+    init(videosType: VideoListType, categotyId: VideoCategoryType){
+        APIProvider.default.fetchVideos(videosType: videosType, categoryId: categotyId.rawValue)
+            .subscribe(onNext: { [weak self] videoList in
+                guard let self = self else { return }
+                if videoList.count > 0 {
+                    self.videosState.onNext(.data(videoList))
+                } else {
+                    self.videosState.onNext(.empty)
+                }
+                }, onError: { [weak self] error in
+                    guard let self = self else { return }
+                    let err = ErrorHandler.handleError(error: error)
+                    self.videosState.onNext(.error(err))
+                })
+                .disposed(by: bag)
     }
 }
