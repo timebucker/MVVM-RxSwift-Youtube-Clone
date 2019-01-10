@@ -46,6 +46,7 @@ class FeedViewController: UIViewController {
             make.leading.trailing.top.bottom.equalToSuperview()
         }
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: VideoCell.reuseIdentifier)
+        
         collectionView.backgroundColor = .white
     }
     
@@ -60,9 +61,6 @@ class FeedViewController: UIViewController {
                 
                 switch state {
                 case .data(let videos):
-                    for video in videos {
-                        print("nhan123: \(video)")
-                    }
                     self.videoList = videos
                     self.collectionView.reloadData()
                 case .empty:

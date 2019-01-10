@@ -89,15 +89,6 @@ class HomeController: UIViewController {
         titleLabel.textColor = .white
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
-        
-//        collectionView.backgroundColor = .white
-//        collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-//        collectionView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
-//        collectionView.isPagingEnabled = true
-//        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-//            flowLayout.scrollDirection = .horizontal
-//            flowLayout.minimumLineSpacing = 0
-//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -181,24 +172,3 @@ extension HomeController: UIScrollViewDelegate {
     }
     
 }
-
-//extension HomeController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: view.frame.width, height: view.frame.height)
-//    }
-//
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        menuBar.horizontalBarLeftAnchorConstraint?.constant = scrollView.contentOffset.x / 4
-//    }
-//
-//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        let index = Int(targetContentOffset.pointee.x / view.frame.width)
-//        let indexPath = IndexPath(item: index, section: 0)
-//        menuBar.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
-//        setTitleForIndex(index: index)
-//    }
-//}
